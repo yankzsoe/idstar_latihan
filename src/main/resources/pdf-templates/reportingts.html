@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        h1{
+            color: black;
+        }
+        .listData {
+            width: 100%;
+        }
+        .listData, .listData th, .listData td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        .listData th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h1>Reporting Timesheet</h1>
+<table>
+    <tr>
+        <th>Data</th>
+    </tr>
+    <tr>
+        <td th:text="'Nama Karyawan: ' + ${user.fullname}"></td>
+    </tr>
+<!--    <tr>-->
+<!--        <td th:text="'Contact Name: ' + ${customer.contactName}"></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td th:text="'Address: ' + ${customer.address}"></td>-->
+<!--    </tr>-->
+    <tr>
+        <td th:text="'Email: ' + ${user.username}"></td>
+    </tr>
+<!--    <tr>-->
+<!--        <td th:text="'Phone: ' + ${customer.phone}"></td>-->
+<!--    </tr>-->
+</table>
+<br />
+<table class="listData" >
+    <tr>
+        <th>No.</th>
+        <th>Tanggal</th>
+        <th>Penugasan</th>
+        <th>Tipe</th>
+        <th>Catatan</th>
+    </tr>
+    <tr th:each="item, iterStat: ${listData}" >
+        <td th:text="${iterStat.index + 1}"></td>
+        <td th:text="${item.date}"></td>
+        <td th:text="${item.penugasan.deskripsi}"></td>
+        <td th:text="${item.type}"></td>
+        <td th:text="${item.alasan}"></td>
+    </tr>
+</table>
+</body>
+</html>
